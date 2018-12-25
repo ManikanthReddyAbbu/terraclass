@@ -1,8 +1,8 @@
 provider "aws" {
-  region     = "us-east-1"
+  region     = "${var.aws_reg}"
 }
 
-resource "aws_instance" "ec2"
+/*resource "aws_instance" "ec2"
 {
   ami = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
@@ -10,6 +10,7 @@ resource "aws_instance" "ec2"
    Name="EC2 Instance"
   }
 }
+*/
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -28,9 +29,4 @@ data "aws_ami" "ubuntu" {
 }
 
 
-output "ami_id" {
-value="${data.aws_ami.ubuntu.id}"
-}
-output "aws_instace" {
-value = "${aws_instance.ec2.public_ip}"
-}
+
