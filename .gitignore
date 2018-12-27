@@ -2,7 +2,7 @@
 
 **/.terraform/*
 
-*.out*
+*.out
 plan.out
 
 .terraform/*
