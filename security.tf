@@ -1,9 +1,31 @@
+resource aws_security_group "mysql" {
 
+      name = "${var.stack}-DBSG"
+      description = "managed by terrafrom for db servers"
+      vpc_id = "${aws_vpc.vpc.id}"
+      tags {
+        Name = "${var.stack}-DBSG"
+      }
+
+     ingress {
+      protocol = "tcp"
+      from_port = 3306
+      to_port = 3306
+      security_groups = ["${aws_security_group.web.id}"]
+     }
+
+    egress {
+      protocol = -1
+      from_port = 0
+      to_port = 0
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+}
 resource aws_security_group "web" {
 
       name = "${var.stack}-webSG"
       description = "This is for ${var.stack}s web servers security group"
-      
+      vpc_id = "${aws_vpc.vpc.id}"
       tags {
       Name = "${var.stack}-webSG"
       }  
@@ -34,7 +56,6 @@ resource aws_security_group "web" {
      to_port = 0 
      cidr_blocks = [ "0.0.0.0/0" ]
     } 
-   
-
- 
 } 
+
+
