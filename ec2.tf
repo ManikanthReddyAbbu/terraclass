@@ -7,10 +7,18 @@ resource "aws_instance" "ec2"
   ami = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
 #  depends_on = ["${aws_db_instance.mysql}"]
+  key_name = "${aws_key_pair.keypair1.key_name}"
   vpc_security_group_ids = ["${aws_security_group.web.id}"]
   subnet_id = "${aws_subnet.public1.id}"
-  key_name = "aws.pem"
-  tags {
+  associate_public_ip_address = true
+/*  user_data = <<-EOF
+              #!/bin/bash
+              sudo apt-get update -y;
+              sudo apt-get install mysql-client -y;
+              EOF
+*/
+  user_data = "${file("userdata.sh")}" 
+ tags {
    Name="EC2 Instance"
   }
 }

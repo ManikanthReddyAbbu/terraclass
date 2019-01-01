@@ -10,3 +10,10 @@ plan.out
 # .tfstate files
 *.tfstate
 *.tfstate.*
+
+
+aws
+aws1
+aws*
+pavan
+pavan*
