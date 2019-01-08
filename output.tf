@@ -13,5 +13,10 @@ value = "${data.aws_availability_zones.azs.*.names}"
 }
 output "db" {
 
-value = "mysql -h ${aws_db_instance.mysql.address} -P ${aws_db_instance.mysql.port} -u ${var.username} -p"
+value = "mysql -h ${aws_db_instance.mysql.address} -P ${aws_db_instance.mysql.port} -u ${var.username} -p${var.password}"
+}
+
+output "config" {
+
+value = "define('DB_NAME', '${aws_db_instance.mysql.address}:${aws_db_instance.mysql.port}');"
 }
