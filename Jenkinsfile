@@ -10,6 +10,7 @@ pipeline {
           steps {
               sh 'sudo rm -r terraclass/;git clone https://github.com/aleti-pavan/terraclass.git;pwd;cd terraclass;pwd'
               sh 'dir=$(pwd)'
+              sh 'echo pavan'
           }
         } 
         stage('Build') { 
