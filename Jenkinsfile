@@ -8,7 +8,7 @@ pipeline {
         }
         stage("cloning project from git"){
           steps {
-              sh 'sudo m -r terraclass/;git clone https://github.com/aleti-pavan/terraclass.git;pwd;cd terraclass;pwd'
+              sh 'sudo rm -r terraclass/;git clone https://github.com/aleti-pavan/terraclass.git;pwd;cd terraclass;pwd'
               sh 'dir=$(pwd)'
           }
         } 
