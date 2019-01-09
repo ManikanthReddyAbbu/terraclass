@@ -9,12 +9,14 @@ pipeline {
         stage("cloning project from git"){
           steps {
               sh 'git clone https://github.com/aleti-pavan/terraclass.git;pwd;cd terraclass;pwd'
+              sh 'dir=$(pwd)'
           }
         } 
         stage('Build') { 
             steps { 
                 sh 'echo "Build1"' 
                 sh 'terraform init'
+                sh '${dir}'
             }
         }
         stage('Test'){
