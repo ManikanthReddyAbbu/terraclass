@@ -16,7 +16,7 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh 'echo "Build1"' 
-                sh 'terraform init'
+                sh 'terraform init;pwd'
                 sh 'echo ${dir}'
             }
         }
