@@ -19,12 +19,6 @@ pipeline {
                 sh 'echo ${dir}'
             }
         }
-        stage('Test'){
-            steps {
-                sh 'date'
-                
-            }
-        }
         stage('Deploy') {
             steps {
                 sh 'date'
